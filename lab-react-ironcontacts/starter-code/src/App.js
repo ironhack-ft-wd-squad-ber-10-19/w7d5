@@ -67,7 +67,17 @@ class App extends Component {
     });
   };
 
+  componentDidMount() {
+    console.log("<App /> DID MOUNT");
+  }
+
+  componentDidUpdate() {
+    console.log("<App /> DID UPDATE");
+  }
+
   render() {
+    console.log("<App /> RENDER");
+
     return (
       <div className="App">
         <h1>IronContacts</h1>
