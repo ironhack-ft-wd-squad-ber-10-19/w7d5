@@ -1,14 +1,30 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import countriesJSON from "./countries.json";
+import axios from "axios";
 
 class CountryList extends React.Component {
   state = {
-    countries: countriesJSON
+    countries: []
   };
 
+  componentDidMount() {
+    console.log("DID MOUNT");
+    axios
+      .get("https://countries.tech-savvy.tech/countries")
+      .then(response => {
+        console.log(response);
+        this.setState({
+          countries: response.data
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
   render() {
-    console.log(this.state);
+    console.log("RENDER", this.state);
+
     return (
       <div
         className="col-5"
